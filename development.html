@@ -1,0 +1,1160 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Development Setup &#8212; EEGPrep manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=92c3505e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=171860b8"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/sg-tags.js?v=d80f6fa4"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=6dbb43f8"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'development';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="_static/logo.jpg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Contributing to EEGPrep" href="contributing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.2.23" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the EEGPrep manual..."
+         aria-label="Search the EEGPrep manual..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt=""/>
+    <img src="_static/logo.jpg" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">eegprep</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="faq.html">
+    Frequently Asked Questions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="glossary.html">
+    Glossary
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="references.html">
+    References and Citations
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributing.html">
+    Contributing to EEGPrep
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="#">
+    Development Setup
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="changelog.html">
+    Changelog
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sccn/eegprep" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="faq.html">
+    Frequently Asked Questions
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="glossary.html">
+    Glossary
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="references.html">
+    References and Citations
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing to EEGPrep
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Development Setup
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="changelog.html">
+    Changelog
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/sccn/eegprep" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Development Setup</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="development-setup">
+<span id="development"></span><h1>Development Setup<a class="headerlink" href="#development-setup" title="Link to this heading">#</a></h1>
+<p>This guide covers setting up a development environment for EEGPrep and contributing to the project.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<section id="system-requirements">
+<h3>System Requirements<a class="headerlink" href="#system-requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Python</strong>: 3.11 or higher</p></li>
+<li><p><strong>Git</strong>: For version control</p></li>
+<li><p><strong>uv</strong>: Default package and environment manager</p></li>
+</ul>
+<p>Check your Python version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>--version
+</pre></div>
+</div>
+</section>
+<section id="required-tools">
+<h3>Required Tools<a class="headerlink" href="#required-tools" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Git</strong>: <a class="reference external" href="https://git-scm.com/">https://git-scm.com/</a></p></li>
+<li><p><strong>Python</strong>: <a class="reference external" href="https://www.python.org/">https://www.python.org/</a></p></li>
+<li><p><strong>uv</strong>: <a class="reference external" href="https://docs.astral.sh/uv/">https://docs.astral.sh/uv/</a></p></li>
+</ul>
+</section>
+<section id="optional-tools">
+<h3>Optional Tools<a class="headerlink" href="#optional-tools" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Conda</strong>: For environment management (<a class="reference external" href="https://conda.io/">https://conda.io/</a>)</p></li>
+<li><p><strong>Docker</strong>: For containerized development</p></li>
+<li><p><strong>Make</strong>: For running build commands</p></li>
+</ul>
+</section>
+</section>
+<section id="installation-from-source">
+<h2>Installation from Source<a class="headerlink" href="#installation-from-source" title="Link to this heading">#</a></h2>
+<section id="clone-the-repository">
+<h3>Clone the Repository<a class="headerlink" href="#clone-the-repository" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/sccn/eegprep.git
+<span class="nb">cd</span><span class="w"> </span>eegprep
+</pre></div>
+</div>
+</section>
+<section id="create-the-uv-environment">
+<h3>Create the uv Environment<a class="headerlink" href="#create-the-uv-environment" title="Link to this heading">#</a></h3>
+<p>Install the default development environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>python<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.11
+uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>dev
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">sync</span></code> creates <code class="docutils literal notranslate"><span class="pre">.venv/</span></code> and installs EEGPrep in editable mode from the
+locked dependency set. The development environment includes the GUI and
+<code class="docutils literal notranslate"><span class="pre">eegprep-console</span></code> runtime dependencies so <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">eegprep-console</span> <span class="pre">--full</span></code>
+works from a fresh checkout. Use <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> for commands so they execute inside
+this environment.</p>
+</section>
+<section id="install-documentation-dependencies">
+<h3>Install Documentation Dependencies<a class="headerlink" href="#install-documentation-dependencies" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>docs<span class="w"> </span>--group<span class="w"> </span>dev
+</pre></div>
+</div>
+<p>This installs:</p>
+<ul class="simple">
+<li><p>The eegprep package in editable mode</p></li>
+<li><p>Development dependencies used by repo tooling</p></li>
+<li><p>Documentation dependencies</p></li>
+</ul>
+</section>
+</section>
+<section id="running-tests">
+<h2>Running Tests<a class="headerlink" href="#running-tests" title="Link to this heading">#</a></h2>
+<section id="test-discovery">
+<h3>Test Discovery<a class="headerlink" href="#test-discovery" title="Link to this heading">#</a></h3>
+<p>Tests are located in the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory. Run all tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests
+</pre></div>
+</div>
+<p>Run specific test file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/test_clean_artifacts.py
+</pre></div>
+</div>
+<p>Run specific test function:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/test_clean_artifacts.py::TestClassName::test_method_name
+</pre></div>
+</div>
+<p>Run a marker subset:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not slow&quot;</span>
+</pre></div>
+</div>
+<p>Markers include <code class="docutils literal notranslate"><span class="pre">slow</span></code>, <code class="docutils literal notranslate"><span class="pre">matlab</span></code>, <code class="docutils literal notranslate"><span class="pre">octave</span></code>, <code class="docutils literal notranslate"><span class="pre">gui</span></code>, <code class="docutils literal notranslate"><span class="pre">visual</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">parity</span></code>. Legacy <code class="docutils literal notranslate"><span class="pre">unittest</span></code> tests are categorized during collection in
+<code class="docutils literal notranslate"><span class="pre">tests/conftest.py</span></code> so marker expressions work without rewriting the tests.</p>
+</section>
+<section id="continuous-integration">
+<h3>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Link to this heading">#</a></h3>
+<p>Tests run automatically on:</p>
+<ul class="simple">
+<li><p>Every push to a branch</p></li>
+<li><p>Every pull request</p></li>
+<li><p>Scheduled nightly runs</p></li>
+</ul>
+<p>Check CI status on GitHub Actions.</p>
+</section>
+</section>
+<section id="eeg-and-session-contracts">
+<h2>EEG And Session Contracts<a class="headerlink" href="#eeg-and-session-contracts" title="Link to this heading">#</a></h2>
+<p>EEGPrep follows EEGLAB’s public data model while keeping Python internals
+explicit and testable. Feature code should treat the following contracts as
+shared foundations rather than per-function conventions.</p>
+<section id="eeg-dictionaries">
+<h3>EEG Dictionaries<a class="headerlink" href="#eeg-dictionaries" title="Link to this heading">#</a></h3>
+<p>Stored EEG dictionaries should be normalized through <code class="docutils literal notranslate"><span class="pre">eeg_checkset</span></code> or an
+<code class="docutils literal notranslate"><span class="pre">EEGPrepSession</span></code> storage helper before other code relies on shape or type
+invariants. The core fields are <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">nbchan</span></code>, <code class="docutils literal notranslate"><span class="pre">pnts</span></code>, <code class="docutils literal notranslate"><span class="pre">trials</span></code>,
+<code class="docutils literal notranslate"><span class="pre">srate</span></code>, <code class="docutils literal notranslate"><span class="pre">xmin</span></code>, <code class="docutils literal notranslate"><span class="pre">xmax</span></code>, <code class="docutils literal notranslate"><span class="pre">times</span></code>, <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">urevent</span></code>, <code class="docutils literal notranslate"><span class="pre">epoch</span></code>,
+<code class="docutils literal notranslate"><span class="pre">chanlocs</span></code>, <code class="docutils literal notranslate"><span class="pre">chaninfo</span></code>, <code class="docutils literal notranslate"><span class="pre">history</span></code>, <code class="docutils literal notranslate"><span class="pre">icaact</span></code>, <code class="docutils literal notranslate"><span class="pre">icawinv</span></code>,
+<code class="docutils literal notranslate"><span class="pre">icasphere</span></code>, <code class="docutils literal notranslate"><span class="pre">icaweights</span></code>, and <code class="docutils literal notranslate"><span class="pre">icachansind</span></code>.</p>
+<p>Continuous data is channel-major with shape <code class="docutils literal notranslate"><span class="pre">(nbchan,</span> <span class="pre">pnts)</span></code>. Epoched data
+is channel-major with shape <code class="docutils literal notranslate"><span class="pre">(nbchan,</span> <span class="pre">pnts,</span> <span class="pre">trials)</span></code>. Event latencies and
+user-visible dataset, channel, epoch, and component indices are EEGLAB-style
+1-based values. Python array indexing remains 0-based inside numerical code.</p>
+<p><code class="docutils literal notranslate"><span class="pre">event</span></code> entries should keep EEGLAB-facing <code class="docutils literal notranslate"><span class="pre">latency</span></code> values and, when
+available, <code class="docutils literal notranslate"><span class="pre">urevent</span></code> pointers back to <code class="docutils literal notranslate"><span class="pre">urevent</span></code> entries. <code class="docutils literal notranslate"><span class="pre">urevent</span></code> is the
+original-event table; functions that create, delete, or reorder events must
+state whether they preserve, extend, or rebuild it. <code class="docutils literal notranslate"><span class="pre">epoch</span></code> stores per-epoch
+event metadata for epoched datasets. <code class="docutils literal notranslate"><span class="pre">chanlocs</span></code> entries use EEGLAB-style
+channel dictionaries, and <code class="docutils literal notranslate"><span class="pre">chaninfo</span></code> stores global channel-location metadata.
+ICA fields must be cleared or recomputed consistently when data, channel
+order, or channel count changes.</p>
+</section>
+<section id="session-selection">
+<h3>Session Selection<a class="headerlink" href="#session-selection" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">EEGPrepSession.CURRENTSET</span></code> is always a Python <code class="docutils literal notranslate"><span class="pre">list[int]</span></code> containing
+EEGLAB-facing 1-based dataset indices. An empty selection is <code class="docutils literal notranslate"><span class="pre">[]</span></code> internally
+and <code class="docutils literal notranslate"><span class="pre">0</span></code> in the console workspace. A single selected dataset is exposed as
+<code class="docutils literal notranslate"><span class="pre">CURRENTSET</span> <span class="pre">==</span> <span class="pre">n</span></code> in the console. Multiple selected datasets are exposed as
+<code class="docutils literal notranslate"><span class="pre">CURRENTSET</span> <span class="pre">==</span> <span class="pre">[n,</span> <span class="pre">...]</span></code>. Selection order is preserved and duplicate dataset
+indices are invalid.</p>
+<p>Read selection state through <code class="docutils literal notranslate"><span class="pre">EEGPrepSession.selected_dataset_indices()</span></code> when
+future STUDY or group-level code needs the current dataset vector. Phase 1a
+defines this read contract only; user-facing multi-selection mutation belongs
+to later feature work.</p>
+</section>
+<section id="history-and-menu-inventory">
+<h3>History And Menu Inventory<a class="headerlink" href="#history-and-menu-inventory" title="Link to this heading">#</a></h3>
+<p>User-facing <code class="docutils literal notranslate"><span class="pre">pop_*</span></code> functions should support <code class="docutils literal notranslate"><span class="pre">return_com=True</span></code> and return a
+history command that can be converted to valid <code class="docutils literal notranslate"><span class="pre">eegprep-console</span></code> input. GUI
+and console code should append each successful command once through
+<code class="docutils literal notranslate"><span class="pre">EEGPrepSession.add_history</span></code> or storage helpers.</p>
+<p>GUI data-changing actions that produce a new EEG dataset, such as resampling,
+filtering, cleaning, epoching, selecting data, rereferencing, interpolation,
+or component removal, should commit through <code class="docutils literal notranslate"><span class="pre">pop_newset</span></code> so the user can
+choose whether to overwrite the current dataset or keep the result as a new
+dataset. Actions that only update metadata, marks, history, ICA fields, or
+STUDY state may store directly when that matches EEGLAB’s callback behavior.</p>
+<p><code class="docutils literal notranslate"><span class="pre">eegprep-console</span></code> and the GUI share one session. GUI command echoes should
+show replayable Python input before progress messages or warnings from the same
+action. <code class="docutils literal notranslate"><span class="pre">eegh</span></code> presents history newest-first like EEGLAB while
+<code class="docutils literal notranslate"><span class="pre">EEGPrepSession.ALLCOM</span></code> remains chronological internally.</p>
+<p>Do not fake EEGLAB’s one-dataset-in-memory <code class="docutils literal notranslate"><span class="pre">option_storedisk</span></code> behavior.
+Use <code class="docutils literal notranslate"><span class="pre">eeg_store</span></code>/<code class="docutils literal notranslate"><span class="pre">eeg_retrieve</span></code> or <code class="docutils literal notranslate"><span class="pre">EEGPrepSession</span></code> so saved non-current
+datasets are represented by explicit offloaded disk handles and rehydrated
+through the shared storage path. Unsaved resident datasets must stay resident
+or fail clearly until the user saves them.</p>
+<p>Menu placeholders are machine-readable. Each placeholder action has either a
+target epic phase or an explicit exclusion reason for workflows that cannot be
+packaged in EEGPrep. Runtime package code must not read, import, or shell out
+to <code class="docutils literal notranslate"><span class="pre">src/eegprep/eeglab</span></code>; that tree is only a development parity reference.</p>
+<p>GUI Help buttons and Help-menu topics must resolve to packaged Markdown files
+under <code class="docutils literal notranslate"><span class="pre">src/eegprep/resources/help</span></code>. Do not fall back to the vendored EEGLAB
+tree or Python docstrings at runtime. When adding a new implemented
+GUI-reachable <code class="docutils literal notranslate"><span class="pre">pop_*</span></code>/<code class="docutils literal notranslate"><span class="pre">eeg_*</span></code> action, add its help resource and extend the
+menu/help resource inventory tests.</p>
+</section>
+</section>
+<section id="eeglab-core-parity-matrix">
+<h2>EEGLAB Core Parity Matrix<a class="headerlink" href="#eeglab-core-parity-matrix" title="Link to this heading">#</a></h2>
+<p>The Phase 1 core parity epic uses a committed machine-readable matrix at
+<code class="docutils literal notranslate"><span class="pre">docs/parity/eeglab_core_parity_matrix.json</span></code>. The matrix classifies the
+EEGLAB public and semi-public functions in the first seven migration-gap audit
+categories from <code class="docutils literal notranslate"><span class="pre">.notes/eeglab-migration-gap-audit.md</span></code>. It is a work
+contract for later phase agents, not package runtime data.</p>
+<p>Rows use these statuses:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">implemented</span></code>: EEGPrep already covers the behavior.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partial</span></code>: EEGPrep has an implementation, but important EEGLAB behavior,
+options, or workflow paths remain.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code>: the row should be ported or wrapped during the responsible phase.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consolidated</span></code>: EEGPrep covers the behavior through another module or
+helper, and a duplicate same-name file is not needed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stale_skip</span></code>: the function is obsolete or stale enough to skip.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matlab_runtime_skip</span></code>: the function is MATLAB-specific runtime, GUI shim,
+path, deployment, or compatibility behavior that should not exist in
+standalone EEGPrep package code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">external_dependency_skip</span></code>: the function depends on external MATLAB
+toolboxes/plugins or web/path integration outside this epic.</p></li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">stale_skip</span></code> only when every stale-policy field in the matrix is false:
+the function is not menu-reachable, not a documented user API, not called by an
+in-scope workflow, not required by parity tests, not needed as a helper for the
+remaining phases, and not a likely compatibility alias users type. When in
+doubt, leave the row as <code class="docutils literal notranslate"><span class="pre">port</span></code> or <code class="docutils literal notranslate"><span class="pre">partial</span></code> and add notes for the
+responsible phase.</p>
+<p>When a later phase implements or intentionally skips a row:</p>
+<ol class="arabic">
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">status</span></code>, <code class="docutils literal notranslate"><span class="pre">eegprep_equivalent</span></code>, <code class="docutils literal notranslate"><span class="pre">rationale</span></code>,
+<code class="docutils literal notranslate"><span class="pre">responsible_phase</span></code>, <code class="docutils literal notranslate"><span class="pre">user_facing_surface</span></code>, and <code class="docutils literal notranslate"><span class="pre">test_notes</span></code> in the
+JSON row.</p></li>
+<li><p>For a new <code class="docutils literal notranslate"><span class="pre">stale_skip</span></code> row, include the complete <code class="docutils literal notranslate"><span class="pre">stale_policy</span></code> object
+with all fields set to <code class="docutils literal notranslate"><span class="pre">false</span></code> and explain the evidence in <code class="docutils literal notranslate"><span class="pre">rationale</span></code>.</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">partial</span></code> rows, keep the row <code class="docutils literal notranslate"><span class="pre">partial</span></code> until unsupported behavior is
+implemented or explicitly reclassified with a defensible limitation.
+Any row left as <code class="docutils literal notranslate"><span class="pre">port</span></code> or <code class="docutils literal notranslate"><span class="pre">partial</span></code> after a phase closes must cite a
+concrete follow-up issue in <code class="docutils literal notranslate"><span class="pre">follow_up_issue</span></code> or, when needed for prose
+context, in <code class="docutils literal notranslate"><span class="pre">rationale</span></code> or <code class="docutils literal notranslate"><span class="pre">test_notes</span></code>.</p></li>
+<li><p>Run the validator:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--no-sync<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>tools.eeglab_parity_matrix
+</pre></div>
+</div>
+</li>
+<li><p>Run the focused matrix tests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--no-sync<span class="w"> </span>pytest<span class="w"> </span>tests/test_eeglab_parity_matrix.py
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The validator may read <code class="docutils literal notranslate"><span class="pre">src/eegprep/eeglab</span></code> because it is development
+tooling. Installed package code under <code class="docutils literal notranslate"><span class="pre">src/eegprep</span></code> must not read, import
+from, or shell out to <code class="docutils literal notranslate"><span class="pre">src/eegprep/eeglab</span></code>. If EEGLAB-like help text,
+examples, options, or resources are needed at runtime, convert them into
+EEGPrep-owned packaged resources instead of reaching into the vendored
+reference tree.</p>
+</section>
+<section id="eeglab-final-standalone-parity-matrix">
+<h2>EEGLAB Final Standalone Parity Matrix<a class="headerlink" href="#eeglab-final-standalone-parity-matrix" title="Link to this heading">#</a></h2>
+<p>The final standalone parity epic uses a second machine-readable matrix at
+<code class="docutils literal notranslate"><span class="pre">docs/parity/eeglab_final_parity_matrix.json</span></code>. It extends the core matrix into
+the remaining product surfaces that are not simple core-function parity rows:
+bundled plugin depth, MATLAB object/storage semantics, optional-toolbox
+workflows, and documentation/tutorial coverage.</p>
+<p>Rows group source files into user workflows, but every discovered final-epic
+EEGLAB reference path must be covered exactly once. The validator discovers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plugins/clean_rawdata</span></code>, <code class="docutils literal notranslate"><span class="pre">plugins/firfilt</span></code>, <code class="docutils literal notranslate"><span class="pre">plugins/ICLabel</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">plugins/dipfit</span></code> files, excluding vendored third-party MatConvNet and
+Manopt internals, examples, and tests;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">functions/&#64;eegobj</span></code>, <code class="docutils literal notranslate"><span class="pre">functions/&#64;memmapdata</span></code>, and <code class="docutils literal notranslate"><span class="pre">functions/&#64;mmo</span></code>;</p></li>
+<li><p>EEGLAB tutorial scripts under <code class="docutils literal notranslate"><span class="pre">tutorial_scripts</span></code>;</p></li>
+<li><p>selected optional-toolbox workflow rows that point back to the core matrix.</p></li>
+</ul>
+<p>Final matrix statuses are <code class="docutils literal notranslate"><span class="pre">implemented</span></code>, <code class="docutils literal notranslate"><span class="pre">partial</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>,
+<code class="docutils literal notranslate"><span class="pre">consolidated</span></code>, <code class="docutils literal notranslate"><span class="pre">stale_skip</span></code>, <code class="docutils literal notranslate"><span class="pre">matlab_runtime_skip</span></code>,
+<code class="docutils literal notranslate"><span class="pre">optional_dependency</span></code>, <code class="docutils literal notranslate"><span class="pre">external_plugin</span></code>, and <code class="docutils literal notranslate"><span class="pre">docs_gap</span></code>. Non-skip rows
+must name a responsible Phase 2-8 issue. Skip rows must use
+<code class="docutils literal notranslate"><span class="pre">responsible_phase:</span> <span class="pre">&quot;none&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">optional_dependency</span></code> rows must name the
+backend decision, fallback behavior, user-facing message, and phase contract so
+later agents do not silently fake external-toolbox behavior.</p>
+<p>Validate the final matrix with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--no-sync<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>tools.eeglab_final_parity_matrix<span class="w"> </span>--json
+</pre></div>
+</div>
+<p>The docs architecture for the final epic is recorded in the matrix metadata and
+in <code class="docutils literal notranslate"><span class="pre">.notes/eeglab-final-parity-audit.md</span></code>. It should be useful to EEG
+researchers first: describe EEGPrep’s standalone Python package, Qt GUI, and
+<code class="docutils literal notranslate"><span class="pre">eegprep-console</span></code> behavior accurately, and use EEGLAB comparisons only where
+they help users migrate or understand familiar concepts.</p>
+</section>
+<section id="building-documentation">
+<h2>Building Documentation<a class="headerlink" href="#building-documentation" title="Link to this heading">#</a></h2>
+<section id="build-html-documentation">
+<h3>Build HTML Documentation<a class="headerlink" href="#build-html-documentation" title="Link to this heading">#</a></h3>
+<p>Sync the docs extra, then build with the same command used by the Phase 7
+acceptance criteria:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>dev<span class="w"> </span>--extra<span class="w"> </span>docs
+uv<span class="w"> </span>run<span class="w"> </span>--no-sync<span class="w"> </span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>docs/source<span class="w"> </span>docs/_build/html
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">docs/Makefile</span></code> target remains available for local iteration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>-C<span class="w"> </span>docs<span class="w"> </span>html
+</pre></div>
+</div>
+<p>The direct Sphinx command writes to <code class="docutils literal notranslate"><span class="pre">docs/_build/html/</span></code>. The Makefile target
+writes to <code class="docutils literal notranslate"><span class="pre">docs/build/html/</span></code>.</p>
+</section>
+<section id="view-documentation-locally">
+<h3>View Documentation Locally<a class="headerlink" href="#view-documentation-locally" title="Link to this heading">#</a></h3>
+<p>Open the built documentation in your browser:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>open<span class="w"> </span>docs/build/html/index.html<span class="w">  </span><span class="c1"># macOS</span>
+xdg-open<span class="w"> </span>docs/build/html/index.html<span class="w">  </span><span class="c1"># Linux</span>
+start<span class="w"> </span>docs/build/html/index.html<span class="w">  </span><span class="c1"># Windows</span>
+</pre></div>
+</div>
+<p>Or use a local server:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs/build/html
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+<p>Then visit <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code> in your browser.</p>
+</section>
+<section id="clean-build">
+<h3>Clean Build<a class="headerlink" href="#clean-build" title="Link to this heading">#</a></h3>
+<p>Remove old build files and rebuild:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>-C<span class="w"> </span>docs<span class="w"> </span>clean
+uv<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>-C<span class="w"> </span>docs<span class="w"> </span>html
+</pre></div>
+</div>
+</section>
+<section id="build-options">
+<h3>Build Options<a class="headerlink" href="#build-options" title="Link to this heading">#</a></h3>
+<p>Build PDF documentation (requires LaTeX):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>-C<span class="w"> </span>docs<span class="w"> </span>latexpdf
+</pre></div>
+</div>
+<p>Build EPUB documentation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>make<span class="w"> </span>-C<span class="w"> </span>docs<span class="w"> </span>epub
+</pre></div>
+</div>
+</section>
+</section>
+<section id="debugging-tips">
+<h2>Debugging Tips<a class="headerlink" href="#debugging-tips" title="Link to this heading">#</a></h2>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading">#</a></h3>
+<p>Enable debug logging in your code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="c1"># Set up logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Use logging in your code</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Debug message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Info message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Warning message&quot;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="breakpoints">
+<h3>Breakpoints<a class="headerlink" href="#breakpoints" title="Link to this heading">#</a></h3>
+<p>Use Python’s built-in debugger:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdb</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>  <span class="c1"># Execution pauses here</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Or use the newer breakpoint() function (Python 3.7+):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="nb">breakpoint</span><span class="p">()</span>  <span class="c1"># Execution pauses here</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</section>
+<section id="profiling">
+<h3>Profiling<a class="headerlink" href="#profiling" title="Link to this heading">#</a></h3>
+<p>Profile code performance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cProfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pstats</span>
+
+<span class="c1"># Profile a function</span>
+<span class="n">profiler</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
+<span class="n">profiler</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+
+<span class="c1"># Your code here</span>
+<span class="n">my_function</span><span class="p">()</span>
+
+<span class="n">profiler</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="n">profiler</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="s1">&#39;cumulative&#39;</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">print_stats</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Print top 10 functions</span>
+</pre></div>
+</div>
+</section>
+<section id="memory-profiling">
+<h3>Memory Profiling<a class="headerlink" href="#memory-profiling" title="Link to this heading">#</a></h3>
+<p>Install memory profiler:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </span>memory-profiler
+</pre></div>
+</div>
+<p>Use it in your code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">memory_profiler</span><span class="w"> </span><span class="kn">import</span> <span class="n">profile</span>
+
+<span class="nd">@profile</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
+    <span class="n">large_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">large_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Run with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>memory_profiler<span class="w"> </span>script.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="release-process">
+<h2>Release Process<a class="headerlink" href="#release-process" title="Link to this heading">#</a></h2>
+<section id="version-numbering">
+<h3>Version Numbering<a class="headerlink" href="#version-numbering" title="Link to this heading">#</a></h3>
+<p>EEGPrep uses <a class="reference external" href="https://semver.org/">Semantic Versioning</a>:</p>
+<ul class="simple">
+<li><p><strong>MAJOR</strong>: Incompatible API changes</p></li>
+<li><p><strong>MINOR</strong>: New functionality (backward compatible)</p></li>
+<li><p><strong>PATCH</strong>: Bug fixes (backward compatible)</p></li>
+</ul>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">1.2.3</span></code> (Major.Minor.Patch)</p>
+</section>
+<section id="versioning-steps">
+<h3>Versioning Steps<a class="headerlink" href="#versioning-steps" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Update version in <code class="docutils literal notranslate"><span class="pre">src/eegprep/__init__.py</span></code>:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.2.3&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Update version in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p></li>
+</ol>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project]</span>
+<span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.2.3&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">docs/source/changelog.rst</span></code> with release notes</p></li>
+<li><p>Commit changes:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Release version 1.2.3&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="tagging">
+<h3>Tagging<a class="headerlink" href="#tagging" title="Link to this heading">#</a></h3>
+<p>Create a git tag for the release:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.2.3<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Release version 1.2.3&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v1.2.3
+</pre></div>
+</div>
+</section>
+<section id="pypi-release">
+<h3>PyPI Release<a class="headerlink" href="#pypi-release" title="Link to this heading">#</a></h3>
+<p>Build distribution packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--group<span class="w"> </span>release<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>build
+</pre></div>
+</div>
+<p>Upload to PyPI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--group<span class="w"> </span>release<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>twine<span class="w"> </span>upload<span class="w"> </span>dist/*
+</pre></div>
+</div>
+<p>Or upload to TestPyPI first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--group<span class="w"> </span>release<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>twine<span class="w"> </span>upload<span class="w"> </span>--repository<span class="w"> </span>testpypi<span class="w"> </span>dist/*
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-issues">
+<h2>Common Issues<a class="headerlink" href="#common-issues" title="Link to this heading">#</a></h2>
+<section id="import-errors">
+<h3>Import Errors<a class="headerlink" href="#import-errors" title="Link to this heading">#</a></h3>
+<p><strong>Problem</strong>: <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'eegprep'</span></code></p>
+<p><strong>Solution</strong>: Install the package in editable mode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="test-failures">
+<h3>Test Failures<a class="headerlink" href="#test-failures" title="Link to this heading">#</a></h3>
+<p><strong>Problem</strong>: Tests fail with import errors</p>
+<p><strong>Solution</strong>: Ensure you’re in the virtual environment and dependencies are installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>dev
+uv<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests
+</pre></div>
+</div>
+</section>
+<section id="documentation-build-errors">
+<h3>Documentation Build Errors<a class="headerlink" href="#documentation-build-errors" title="Link to this heading">#</a></h3>
+<p><strong>Problem</strong>: Sphinx build fails with missing modules</p>
+<p><strong>Solution</strong>: Install documentation dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>docs<span class="w"> </span>--group<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="git-conflicts">
+<h3>Git Conflicts<a class="headerlink" href="#git-conflicts" title="Link to this heading">#</a></h3>
+<p><strong>Problem</strong>: Merge conflicts when pulling upstream changes</p>
+<p><strong>Solution</strong>: Resolve conflicts manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+git<span class="w"> </span>rebase<span class="w"> </span>upstream/develop
+<span class="c1"># Resolve conflicts in your editor</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>rebase<span class="w"> </span>--continue
+</pre></div>
+</div>
+</section>
+<section id="virtual-environment-issues">
+<h3>Virtual Environment Issues<a class="headerlink" href="#virtual-environment-issues" title="Link to this heading">#</a></h3>
+<p><strong>Problem</strong>: Virtual environment not activating</p>
+<p><strong>Solution</strong>: Recreate the virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>.venv
+uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+<section id="dependency-conflicts">
+<h3>Dependency Conflicts<a class="headerlink" href="#dependency-conflicts" title="Link to this heading">#</a></h3>
+<p><strong>Problem</strong>: Dependency version conflicts</p>
+<p><strong>Solution</strong>: Refresh the locked environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>lock
+uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>dev
+</pre></div>
+</div>
+</section>
+</section>
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Check the <a class="reference internal" href="contributing.html"><span class="doc">Contributing to EEGPrep</span></a> guide</p></li>
+<li><p>Review existing <a class="reference external" href="https://github.com/sccn/eegprep/issues">GitHub Issues</a></p></li>
+<li><p>Ask in GitHub Discussions</p></li>
+<li><p>Contact the maintainers</p></li>
+</ul>
+<p>Happy developing!</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="contributing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contributing to EEGPrep</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="changelog.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Changelog</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-requirements">System Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-tools">Required Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-tools">Optional Tools</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-from-source">Installation from Source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-the-repository">Clone the Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-uv-environment">Create the uv Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-documentation-dependencies">Install Documentation Dependencies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-tests">Running Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-discovery">Test Discovery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration">Continuous Integration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-and-session-contracts">EEG And Session Contracts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-dictionaries">EEG Dictionaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#session-selection">Session Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#history-and-menu-inventory">History And Menu Inventory</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeglab-core-parity-matrix">EEGLAB Core Parity Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeglab-final-standalone-parity-matrix">EEGLAB Final Standalone Parity Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-documentation">Building Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-html-documentation">Build HTML Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-documentation-locally">View Documentation Locally</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-build">Clean Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-options">Build Options</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-tips">Debugging Tips</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logging">Logging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breakpoints">Breakpoints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling">Profiling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-profiling">Memory Profiling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-process">Release Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-numbering">Version Numbering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning-steps">Versioning Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tagging">Tagging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pypi-release">PyPI Release</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-issues">Common Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-errors">Import Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-failures">Test Failures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-build-errors">Documentation Build Errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-conflicts">Git Conflicts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual-environment-issues">Virtual Environment Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-conflicts">Dependency Conflicts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting Help</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024-2026, EEGPrep contributors.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
